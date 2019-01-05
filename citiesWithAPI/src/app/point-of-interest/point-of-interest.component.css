@@ -1,0 +1,13 @@
+.btn.btn-xs.btn-success{
+    margin-right: 20px;
+    float: left;
+}
+
+.btn.btn-xs.btn-danger{
+    margin-right: 20px;
+    float: left;
+}
+
+#itens{
+    height: 45px;
+}

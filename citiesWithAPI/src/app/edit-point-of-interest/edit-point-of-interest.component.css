@@ -1,0 +1,9 @@
+input#description {
+    margin-left: 30px;
+    width: 400%;
+}
+
+#edit{
+    float: right;
+    margin-left: 10px;
+}

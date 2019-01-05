@@ -1,0 +1,430 @@
+2018-12-15 22:28:12.984 -02:00 [INF] Iniciando Aplicação...
+2018-12-15 22:28:19.404 -02:00 [INF] User profile is available. Using 'C:\Users\Pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-12-15 22:28:19.482 -02:00 [INF] Creating key "8504082d-ed64-4d1c-9e0c-149e8b83bf13" with creation date "2018-12-16T00:28:19.4507132+00:00", activation date "2018-12-16T00:28:19.4387125+00:00", and expiration date "2019-03-16T00:28:19.4387125+00:00".
+2018-12-15 22:28:19.669 -02:00 [INF] Writing data to file 'C:\Users\Pedro\AppData\Local\ASP.NET\DataProtection-Keys\key-8504082d-ed64-4d1c-9e0c-149e8b83bf13.xml'.
+2018-12-15 22:28:22.422 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:29:03.488 -02:00 [ERR] An error occurred using the connection to database 'CityInfoDB' on server '(localdb)\mssqllocaldb'.
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "CityInfoDB" requested by the login. The login failed.
+Login failed for user 'Pedro-PC\Pedro'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+ClientConnectionId:bf40dbcf-6fe9-490e-9041-55f18ec15e6b
+Error Number:4060,State:1,Class:11
+2018-12-15 22:29:04.353 -02:00 [ERR] An exception occurred in the database while iterating the results of a query for context type 'CitiesInfo.API.Entities.CityInfoContext'.
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "CityInfoDB" requested by the login. The login failed.
+Login failed for user 'Pedro-PC\Pedro'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+ClientConnectionId:bf40dbcf-6fe9-490e-9041-55f18ec15e6b
+Error Number:4060,State:1,Class:11
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "CityInfoDB" requested by the login. The login failed.
+Login failed for user 'Pedro-PC\Pedro'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+ClientConnectionId:bf40dbcf-6fe9-490e-9041-55f18ec15e6b
+Error Number:4060,State:1,Class:11
+2018-12-15 22:29:04.509 -02:00 [ERR] An exception occurred in the database while iterating the results of a query for context type 'CitiesInfo.API.Entities.CityInfoContext'.
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "CityInfoDB" requested by the login. The login failed.
+Login failed for user 'Pedro-PC\Pedro'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+ClientConnectionId:bf40dbcf-6fe9-490e-9041-55f18ec15e6b
+Error Number:4060,State:1,Class:11
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "CityInfoDB" requested by the login. The login failed.
+Login failed for user 'Pedro-PC\Pedro'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+ClientConnectionId:bf40dbcf-6fe9-490e-9041-55f18ec15e6b
+Error Number:4060,State:1,Class:11
+2018-12-15 22:29:04.975 -02:00 [FTL] Application startup exception
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "CityInfoDB" requested by the login. The login failed.
+Login failed for user 'Pedro-PC\Pedro'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.Any[TSource](IQueryable`1 source)
+   at CitiesInfo.API.CityInfoContextExtensions.EnsureSeedDataForContext(CityInfoContext context) in C:\Users\Pedro\Documents\Desenvolvimento\Estagio\aspnet\CitiesInfo.API\CityInfoContextExtensions.cs:line 10
+   at CitiesInfo.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, CityInfoContext cityInfoContext) in C:\Users\Pedro\Documents\Desenvolvimento\Estagio\aspnet\CitiesInfo.API\Startup.cs:line 59
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+ClientConnectionId:bf40dbcf-6fe9-490e-9041-55f18ec15e6b
+Error Number:4060,State:1,Class:11
+2018-12-15 22:29:05.056 -02:00 [FTL] Host terminated unexpectedly
+System.Data.SqlClient.SqlException (0x80131904): Cannot open database "CityInfoDB" requested by the login. The login failed.
+Login failed for user 'Pedro-PC\Pedro'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.QueryMethodProvider.GetResult[TResult](IEnumerable`1 valueBuffers, Boolean throwOnNullResult)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.Any[TSource](IQueryable`1 source)
+   at CitiesInfo.API.CityInfoContextExtensions.EnsureSeedDataForContext(CityInfoContext context) in C:\Users\Pedro\Documents\Desenvolvimento\Estagio\aspnet\CitiesInfo.API\CityInfoContextExtensions.cs:line 10
+   at CitiesInfo.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, CityInfoContext cityInfoContext) in C:\Users\Pedro\Documents\Desenvolvimento\Estagio\aspnet\CitiesInfo.API\Startup.cs:line 59
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.WebHostExtensions.RunAsync(IWebHost host, CancellationToken token, String shutdownMessage)
+   at Microsoft.AspNetCore.Hosting.WebHostExtensions.RunAsync(IWebHost host, CancellationToken token)
+   at Microsoft.AspNetCore.Hosting.WebHostExtensions.Run(IWebHost host)
+   at CitiesInfo.API.Program.Main(String[] args) in C:\Users\Pedro\Documents\Desenvolvimento\Estagio\aspnet\CitiesInfo.API\Program.cs:line 24
+ClientConnectionId:bf40dbcf-6fe9-490e-9041-55f18ec15e6b
+Error Number:4060,State:1,Class:11
+2018-12-15 22:55:08.367 -02:00 [INF] Iniciando Aplicação...
+2018-12-15 22:55:11.120 -02:00 [INF] User profile is available. Using 'C:\Users\Pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-12-15 22:55:12.854 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:55:13.971 -02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-12-15 22:55:14.427 -02:00 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-12-15 22:55:14.474 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-12-15 22:55:14.490 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-12-15 22:55:14.635 -02:00 [INF] Executed DbCommand (128ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (Size = 50), @p5='?' (DbType = Int32), @p6='?' (Size = 100), @p7='?' (Size = 50), @p8='?' (DbType = Int32), @p9='?' (Size = 100), @p10='?' (Size = 50), @p11='?' (DbType = Int32), @p12='?' (Size = 100), @p13='?' (Size = 50), @p14='?' (DbType = Int32), @p15='?' (Size = 100), @p16='?' (Size = 50), @p17='?' (DbType = Int32), @p18='?' (Size = 100), @p19='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [PointsOfInterest] USING (
+VALUES (@p2, @p3, @p4, 0),
+(@p5, @p6, @p7, 1),
+(@p8, @p9, @p10, 2),
+(@p11, @p12, @p13, 3),
+(@p14, @p15, @p16, 4),
+(@p17, @p18, @p19, 5)) AS i ([CityId], [Description], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CityId], [Description], [Name])
+VALUES (i.[CityId], i.[Description], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [PointsOfInterest] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+2018-12-15 22:55:53.104 -02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2018-12-15 22:55:53.135 -02:00 [INF] Policy execution successful.
+2018-12-15 22:55:55.104 -02:00 [INF] Route matched with {action = "GetCities", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API)
+2018-12-15 22:55:55.272 -02:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API) with arguments (["False"]) - Validation state: "Valid"
+2018-12-15 22:55:55.309 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:55:55.475 -02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2018-12-15 22:55:55.611 -02:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 302.15340000000003ms.
+2018-12-15 22:55:55.642 -02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[CitiesInfo.API.Models.CityWithoutPointsOfInterestDTO, CitiesInfo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-12-15 22:55:56.023 -02:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API) in 887.6167ms
+2018-12-15 22:55:56.044 -02:00 [INF] Request finished in 2946.2347ms 200 application/json; charset=utf-8
+2018-12-15 22:55:58.843 -02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1/pointsofinterest  
+2018-12-15 22:55:58.843 -02:00 [INF] Policy execution successful.
+2018-12-15 22:55:58.868 -02:00 [INF] Route matched with {action = "GetPointsOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API)
+2018-12-15 22:55:58.898 -02:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) with arguments (["1"]) - Validation state: "Valid"
+2018-12-15 22:55:58.911 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:55:58.977 -02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-12-15 22:55:59.044 -02:00 [INF] Executed DbCommand (28ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2018-12-15 22:55:59.078 -02:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 172.51260000000002ms.
+2018-12-15 22:55:59.084 -02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[CitiesInfo.API.Models.PointOfInterestDTO, CitiesInfo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-12-15 22:55:59.100 -02:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) in 226.61890000000003ms
+2018-12-15 22:55:59.107 -02:00 [INF] Request finished in 254.2703ms 200 application/json; charset=utf-8
+2018-12-15 22:56:13.295 -02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/cities/1/pointsofinterest  
+2018-12-15 22:56:13.301 -02:00 [INF] Policy execution successful.
+2018-12-15 22:56:13.307 -02:00 [INF] Request finished in 11.989ms 204 
+2018-12-15 22:56:13.368 -02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/cities/1/pointsofinterest application/json 54
+2018-12-15 22:56:13.373 -02:00 [INF] Policy execution successful.
+2018-12-15 22:56:13.387 -02:00 [INF] Route matched with {action = "CreatePointOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest (CitiesInfo.API)
+2018-12-15 22:56:13.571 -02:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest (CitiesInfo.API) with arguments (["1","CitiesInfo.API.Models.PointOfInterestForCreateDTO"]) - Validation state: "Valid"
+2018-12-15 22:56:13.594 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:56:13.609 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-12-15 22:56:13.667 -02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-12-15 22:56:13.690 -02:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 100), @p2='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [PointsOfInterest] ([CityId], [Description], [Name])
+VALUES (@p0, @p1, @p2);
+SELECT [Id]
+FROM [PointsOfInterest]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-12-15 22:56:13.748 -02:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.CreatedAtActionResult in 158.3136ms.
+2018-12-15 22:56:13.754 -02:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.PointOfInterestDTO'.
+2018-12-15 22:56:13.811 -02:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.CreatePointOfInterest (CitiesInfo.API) in 419.3598ms
+2018-12-15 22:56:13.820 -02:00 [INF] Request finished in 452.3818ms 201 application/json; charset=utf-8
+2018-12-15 22:58:16.454 -02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/cities/1/pointsofinterest/7  
+2018-12-15 22:58:16.457 -02:00 [INF] Policy execution successful.
+2018-12-15 22:58:16.460 -02:00 [INF] Request finished in 5.7087ms 204 
+2018-12-15 22:58:16.472 -02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5000/api/cities/1/pointsofinterest/7 application/json 59
+2018-12-15 22:58:16.475 -02:00 [INF] Policy execution successful.
+2018-12-15 22:58:16.485 -02:00 [INF] Route matched with {action = "UpdatePointOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.UpdatePointOfInterest (CitiesInfo.API)
+2018-12-15 22:58:16.497 -02:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.UpdatePointOfInterest (CitiesInfo.API) with arguments (["1","7","CitiesInfo.API.Models.PointOfInterestForUpdateDTO"]) - Validation state: "Valid"
+2018-12-15 22:58:16.507 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:58:16.515 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-12-15 22:58:16.552 -02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__cityId_0='?' (DbType = Int32), @__pointOfInterestId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE ([p].[CityId] = @__cityId_0) AND ([p].[Id] = @__pointOfInterestId_1)
+2018-12-15 22:58:16.585 -02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [PointsOfInterest] SET [Description] = @p0
+WHERE [Id] = @p1;
+SELECT @@ROWCOUNT;
+2018-12-15 22:58:16.597 -02:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.UpdatePointOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NoContentResult in 92.036300000000011ms.
+2018-12-15 22:58:16.609 -02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2018-12-15 22:58:16.617 -02:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.UpdatePointOfInterest (CitiesInfo.API) in 129.0454ms
+2018-12-15 22:58:16.624 -02:00 [INF] Request finished in 151.5167ms 204 
+2018-12-15 22:58:19.825 -02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/cities/1/pointsofinterest/7  
+2018-12-15 22:58:19.841 -02:00 [INF] Policy execution successful.
+2018-12-15 22:58:19.841 -02:00 [INF] Request finished in 10.3328ms 204 
+2018-12-15 22:58:19.858 -02:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/1/pointsofinterest/7  
+2018-12-15 22:58:19.864 -02:00 [INF] Policy execution successful.
+2018-12-15 22:58:19.872 -02:00 [INF] Route matched with {action = "DeletePointOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API)
+2018-12-15 22:58:19.879 -02:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API) with arguments (["1","7"]) - Validation state: "Valid"
+2018-12-15 22:58:19.893 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:58:19.901 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-12-15 22:58:19.914 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32), @__pointOfInterestId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE ([p].[CityId] = @__cityId_0) AND ([p].[Id] = @__pointOfInterestId_1)
+2018-12-15 22:58:19.973 -02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [PointsOfInterest]
+WHERE [Id] = @p0;
+SELECT @@ROWCOUNT;
+2018-12-15 22:58:19.990 -02:00 [INF] Testando...
+2018-12-15 22:58:19.997 -02:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NoContentResult in 112.4642ms.
+2018-12-15 22:58:20.003 -02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2018-12-15 22:58:20.008 -02:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API) in 130.263ms
+2018-12-15 22:58:20.014 -02:00 [INF] Request finished in 155.993ms 204 
+2018-12-15 22:58:26.206 -02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/3/pointsofinterest  
+2018-12-15 22:58:26.206 -02:00 [INF] Policy execution successful.
+2018-12-15 22:58:26.206 -02:00 [INF] Route matched with {action = "GetPointsOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API)
+2018-12-15 22:58:26.206 -02:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) with arguments (["3"]) - Validation state: "Valid"
+2018-12-15 22:58:26.238 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:58:26.248 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-12-15 22:58:26.260 -02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2018-12-15 22:58:26.270 -02:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 33.0123ms.
+2018-12-15 22:58:26.275 -02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[CitiesInfo.API.Models.PointOfInterestDTO, CitiesInfo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-12-15 22:58:26.279 -02:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) in 61.632000000000005ms
+2018-12-15 22:58:26.284 -02:00 [INF] Request finished in 78.1077ms 200 application/json; charset=utf-8
+2018-12-15 22:58:27.819 -02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/2/pointsofinterest  
+2018-12-15 22:58:27.891 -02:00 [INF] Policy execution successful.
+2018-12-15 22:58:27.894 -02:00 [INF] Route matched with {action = "GetPointsOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API)
+2018-12-15 22:58:27.899 -02:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) with arguments (["2"]) - Validation state: "Valid"
+2018-12-15 22:58:27.906 -02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-12-15 22:58:27.914 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-12-15 22:58:27.922 -02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2018-12-15 22:58:27.930 -02:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 24.0105ms.
+2018-12-15 22:58:27.948 -02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[CitiesInfo.API.Models.PointOfInterestDTO, CitiesInfo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-12-15 22:58:27.954 -02:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) in 56.2147ms
+2018-12-15 22:58:27.961 -02:00 [INF] Request finished in 136.7075ms 200 application/json; charset=utf-8

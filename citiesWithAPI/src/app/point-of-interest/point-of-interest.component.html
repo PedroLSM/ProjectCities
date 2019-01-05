@@ -1,0 +1,26 @@
+<ul class="list-group">
+
+  <li class="list-group-item">
+    <b>{{ poi.name }}</b>
+  </li>
+
+  <li *ngIf="poi.showDescription" class="list-group-item">
+      {{ poi.description }}
+  </li>
+
+  <li id="itens" class="list-group-item">
+
+      <button class="btn btn-xs btn-success"  (click) = "show(poi)">Descrição</button>
+      <button class="btn btn-xs btn-danger"   (click) = "delete(poi)">Remover</button>
+      <button class="btn btn-xs btn-warning"  (click) = "edit(poi)">
+        {{ editar ? "Cancelar Edição" : "Editar" }}
+      </button>
+      
+  </li>
+  
+  <li class="list-group-item" *ngIf="editar">
+      <app-edit-point-of-interest [cityId]="cityId" [pointOfInterest] = "poi">
+      </app-edit-point-of-interest>
+  </li>
+
+</ul>

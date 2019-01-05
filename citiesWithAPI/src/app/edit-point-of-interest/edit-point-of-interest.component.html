@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="form form-inline">
+
+  <div class="form-group">
+    <input formControlName="name" type="name" class="form-control" id="name">
+  </div>
+
+  <div class="form-group">
+    <input formControlName="description" type="text" class="form-control" id="description">
+  </div>
+
+  <button class="btn btn-success" id="edit" >Salvar</button>
+
+</form>

@@ -1,0 +1,47 @@
+2018-11-16 14:09:29.540 -03:00 [INF] Starting Amplifier web host
+2018-11-16 14:09:29.802 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-16 14:09:41.010 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/6/pointsofinterest application/json 97
+2018-11-16 14:09:41.115 -03:00 [INF] Request finished in 105.7459ms 404 text/plain
+2018-11-16 14:09:41.129 -03:00 [INF] Connection id "0HLIBSP604DAL", Request id "0HLIBSP604DAL:00000001": the application completed without reading the entire request body.
+2018-11-16 14:09:55.141 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/6/pointsofinterest application/json 97
+2018-11-16 14:09:55.142 -03:00 [INF] Request finished in 1.6696ms 404 text/plain
+2018-11-16 14:09:55.144 -03:00 [INF] Connection id "0HLIBSP604DAL", Request id "0HLIBSP604DAL:00000002": the application completed without reading the entire request body.
+2018-11-16 14:10:44.436 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/6/pointsofinterest application/json 97
+2018-11-16 14:10:44.456 -03:00 [INF] Route matched with {action = "GetPointsOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API)
+2018-11-16 14:10:44.492 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) with arguments (["6"]) - Validation state: "Valid"
+2018-11-16 14:10:44.508 -03:00 [INF] Cidade não existe.
+2018-11-16 14:10:44.511 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 2.8881ms.
+2018-11-16 14:10:44.517 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-16 14:10:44.521 -03:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) in 62.1516ms
+2018-11-16 14:10:44.523 -03:00 [INF] Request finished in 86.3805ms 404 text/plain
+2018-11-16 14:10:44.523 -03:00 [INF] Connection id "0HLIBSP604DAL", Request id "0HLIBSP604DAL:00000003": the application completed without reading the entire request body.
+2018-11-16 14:11:24.706 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/6/pointsofinterest application/json 97
+2018-11-16 14:11:24.707 -03:00 [INF] Route matched with {action = "GetPointsOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API)
+2018-11-16 14:11:24.709 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) with arguments (["6"]) - Validation state: "Valid"
+2018-11-16 14:11:24.711 -03:00 [INF] Cidade não existe.
+2018-11-16 14:11:24.711 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 0.4859ms.
+2018-11-16 14:11:24.712 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-16 14:11:24.713 -03:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) in 4.6563ms
+2018-11-16 14:11:24.714 -03:00 [INF] Request finished in 8.4453ms 404 text/plain
+2018-11-16 14:11:24.715 -03:00 [INF] Connection id "0HLIBSP604DAL", Request id "0HLIBSP604DAL:00000004": the application completed without reading the entire request body.
+2018-11-16 14:14:10.039 -03:00 [INF] Iniciando Aplicação...
+2018-11-16 14:14:10.281 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-16 14:14:13.992 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/6/pointsofinterest application/json 97
+2018-11-16 14:14:14.106 -03:00 [INF] Route matched with {action = "GetPointsOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API)
+2018-11-16 14:14:14.134 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) with arguments (["6"]) - Validation state: "Valid"
+2018-11-16 14:14:14.149 -03:00 [FTL] Cidade não existe.
+2018-11-16 14:14:14.153 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 3.2094ms.
+2018-11-16 14:14:14.161 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-16 14:14:14.165 -03:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CitiesInfo.API) in 55.8845ms
+2018-11-16 14:14:14.175 -03:00 [INF] Request finished in 184.7671ms 404 text/plain
+2018-11-16 14:14:14.192 -03:00 [INF] Connection id "0HLIBSRNBJM2M", Request id "0HLIBSRNBJM2M:00000001": the application completed without reading the entire request body.
+2018-11-16 14:19:06.080 -03:00 [INF] Iniciando Aplicação...
+2018-11-16 14:19:06.313 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-16 14:19:20.880 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/6/pointsofinterest/1 application/json 97
+2018-11-16 14:19:20.996 -03:00 [INF] Route matched with {action = "DeletePointOfInterest", controller = "PointsOfInterest"}. Executing action CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API)
+2018-11-16 14:19:21.043 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API) with arguments (["6","1"]) - Validation state: "Valid"
+2018-11-16 14:19:21.062 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 1.9098000000000002ms.
+2018-11-16 14:19:21.067 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-16 14:19:21.071 -03:00 [INF] Executed action CitiesInfo.API.Controllers.PointsOfInterestController.DeletePointOfInterest (CitiesInfo.API) in 55.5651ms
+2018-11-16 14:19:21.080 -03:00 [INF] Request finished in 201.4429ms 404 text/plain
+2018-11-16 14:19:21.102 -03:00 [INF] Connection id "0HLIBSUIQBLCQ", Request id "0HLIBSUIQBLCQ:00000001": the application completed without reading the entire request body.

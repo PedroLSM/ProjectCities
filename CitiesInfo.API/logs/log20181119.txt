@@ -1,0 +1,713 @@
+2018-11-19 14:56:06.060 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 14:56:06.773 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 14:56:07.354 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 14:56:08.056 -03:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 14:56:08.601 -03:00 [INF] Executed DbCommand (358ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 14:56:08.612 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 14:56:08.615 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 14:56:09.510 -03:00 [ERR] Failed executing DbCommand (892ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (Size = 50), @p5='?' (DbType = Int32), @p6='?' (Size = 100), @p7='?' (Size = 50), @p8='?' (DbType = Int32), @p9='?' (Size = -1), @p10='?' (Size = 50), @p11='?' (DbType = Int32), @p12='?' (Size = 100), @p13='?' (Size = 50), @p14='?' (DbType = Int32), @p15='?' (Size = 100), @p16='?' (Size = 50), @p17='?' (DbType = Int32), @p18='?' (Size = 100), @p19='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [PointsOfInterest] USING (
+VALUES (@p2, @p3, @p4, 0),
+(@p5, @p6, @p7, 1),
+(@p8, @p9, @p10, 2),
+(@p11, @p12, @p13, 3),
+(@p14, @p15, @p16, 4),
+(@p17, @p18, @p19, 5)) AS i ([CityId], [Description], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CityId], [Description], [Name])
+VALUES (i.[CityId], i.[Description], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [PointsOfInterest] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+System.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:2c50f5c9-29d7-4035-b479-662af9c5b7c2
+Error Number:8152,State:10,Class:16
+2018-11-19 14:56:10.054 -03:00 [ERR] An exception occurred in the database while saving changes for context type 'CitiesInfo.API.Entities.CityInfoContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: String or binary data would be truncated.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: String or binary data would be truncated.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2018-11-19 14:56:10.235 -03:00 [FTL] Application startup exception
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: String or binary data would be truncated.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at CitiesInfo.API.CityInfoContextExtensions.EnsureSeedDataForContext(CityInfoContext context) in C:\Users\pedro\Documents\Desenvolvimento\Estágio\curso_aspnet\CitiesInfo.API\CityInfoContextExtensions.cs:line 60
+   at CitiesInfo.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, CityInfoContext cityInfoContext) in C:\Users\pedro\Documents\Desenvolvimento\Estágio\curso_aspnet\CitiesInfo.API\Startup.cs:line 58
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2018-11-19 14:56:10.290 -03:00 [FTL] Host terminated unexpectedly
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: String or binary data would be truncated.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TrySetMetaData(_SqlMetaDataSet metaData, Boolean moreInfo)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at CitiesInfo.API.CityInfoContextExtensions.EnsureSeedDataForContext(CityInfoContext context) in C:\Users\pedro\Documents\Desenvolvimento\Estágio\curso_aspnet\CitiesInfo.API\CityInfoContextExtensions.cs:line 60
+   at CitiesInfo.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, CityInfoContext cityInfoContext) in C:\Users\pedro\Documents\Desenvolvimento\Estágio\curso_aspnet\CitiesInfo.API\Startup.cs:line 58
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.WebHostExtensions.RunAsync(IWebHost host, CancellationToken token, String shutdownMessage)
+   at Microsoft.AspNetCore.Hosting.WebHostExtensions.RunAsync(IWebHost host, CancellationToken token)
+   at Microsoft.AspNetCore.Hosting.WebHostExtensions.Run(IWebHost host)
+   at CitiesInfo.API.Program.Main(String[] args) in C:\Users\pedro\Documents\Desenvolvimento\Estágio\curso_aspnet\CitiesInfo.API\Program.cs:line 24
+2018-11-19 15:08:53.090 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 15:08:53.341 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 15:08:53.604 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 15:08:55.405 -03:00 [INF] Executed DbCommand (300ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 15:08:55.499 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 15:08:55.508 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 15:08:55.512 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 15:08:55.964 -03:00 [INF] Executed DbCommand (449ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (Size = 50), @p5='?' (DbType = Int32), @p6='?' (Size = 100), @p7='?' (Size = 50), @p8='?' (DbType = Int32), @p9='?' (Size = 100), @p10='?' (Size = 50), @p11='?' (DbType = Int32), @p12='?' (Size = 100), @p13='?' (Size = 50), @p14='?' (DbType = Int32), @p15='?' (Size = 100), @p16='?' (Size = 50), @p17='?' (DbType = Int32), @p18='?' (Size = 100), @p19='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [PointsOfInterest] USING (
+VALUES (@p2, @p3, @p4, 0),
+(@p5, @p6, @p7, 1),
+(@p8, @p9, @p10, 2),
+(@p11, @p12, @p13, 3),
+(@p14, @p15, @p16, 4),
+(@p17, @p18, @p19, 5)) AS i ([CityId], [Description], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CityId], [Description], [Name])
+VALUES (i.[CityId], i.[Description], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [PointsOfInterest] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+2018-11-19 15:15:38.702 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 15:15:38.940 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 15:15:39.158 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 15:15:39.296 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 16:14:35.190 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 16:14:35.456 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 16:14:35.688 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:14:35.871 -03:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 16:44:33.219 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/1 application/json 97
+2018-11-19 16:44:33.704 -03:00 [INF] Request finished in 485.4952ms 404 text/plain
+2018-11-19 16:44:33.713 -03:00 [INF] Connection id "0HLIEATMSE18T", Request id "0HLIEATMSE18T:00000001": the application completed without reading the entire request body.
+2018-11-19 16:44:39.335 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/4 application/json 97
+2018-11-19 16:44:39.337 -03:00 [INF] Request finished in 1.6066ms 404 text/plain
+2018-11-19 16:44:39.338 -03:00 [INF] Connection id "0HLIEATMSE18T", Request id "0HLIEATMSE18T:00000002": the application completed without reading the entire request body.
+2018-11-19 16:44:43.392 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/5 application/json 97
+2018-11-19 16:44:43.392 -03:00 [INF] Request finished in 0.7993ms 404 text/plain
+2018-11-19 16:44:43.393 -03:00 [INF] Connection id "0HLIEATMSE18T", Request id "0HLIEATMSE18T:00000003": the application completed without reading the entire request body.
+2018-11-19 16:45:04.550 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 16:45:04.792 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 16:45:05.013 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:45:05.189 -03:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 16:45:08.912 -03:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5000/api/cities/5 application/json 97
+2018-11-19 16:45:09.011 -03:00 [INF] Request finished in 99.5196ms 404 text/plain
+2018-11-19 16:45:09.025 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000001": the application completed without reading the entire request body.
+2018-11-19 16:45:52.715 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/5 application/json 97
+2018-11-19 16:45:52.957 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:45:53.030 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["5","False"]) - Validation state: "Valid"
+2018-11-19 16:45:53.062 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:45:53.240 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 16:45:53.282 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 228.913ms.
+2018-11-19 16:45:53.291 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityWithoutPointsOfInterest'.
+2018-11-19 16:45:53.424 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 453.46810000000005ms
+2018-11-19 16:45:53.426 -03:00 [INF] Request finished in 711.2562ms 200 application/json; charset=utf-8
+2018-11-19 16:45:53.426 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000002": the application completed without reading the entire request body.
+2018-11-19 16:45:59.322 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1 application/json 97
+2018-11-19 16:45:59.323 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:45:59.325 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","False"]) - Validation state: "Valid"
+2018-11-19 16:45:59.327 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:45:59.330 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 16:45:59.345 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 18.2926ms.
+2018-11-19 16:45:59.349 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-19 16:45:59.350 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 26.0047ms
+2018-11-19 16:45:59.351 -03:00 [INF] Request finished in 29.4391ms 404 text/plain
+2018-11-19 16:45:59.352 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000003": the application completed without reading the entire request body.
+2018-11-19 16:46:02.908 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4 application/json 97
+2018-11-19 16:46:02.909 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:46:02.910 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","False"]) - Validation state: "Valid"
+2018-11-19 16:46:02.912 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:46:03.012 -03:00 [INF] Executed DbCommand (97ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 16:46:03.014 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 102.2231ms.
+2018-11-19 16:46:03.015 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityWithoutPointsOfInterest'.
+2018-11-19 16:46:03.016 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 106.4569ms
+2018-11-19 16:46:03.017 -03:00 [INF] Request finished in 108.7435ms 200 application/json; charset=utf-8
+2018-11-19 16:46:03.018 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000004": the application completed without reading the entire request body.
+2018-11-19 16:46:15.580 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4?includePointsOfInterest=true application/json 97
+2018-11-19 16:46:15.581 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:46:15.584 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","True"]) - Validation state: "Valid"
+2018-11-19 16:46:15.587 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:46:15.755 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+ORDER BY [c].[Id]
+2018-11-19 16:46:15.834 -03:00 [INF] Executed DbCommand (48ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c.PointsOfInterest].[Id], [c.PointsOfInterest].[CityId], [c.PointsOfInterest].[Description], [c.PointsOfInterest].[Name]
+FROM [PointsOfInterest] AS [c.PointsOfInterest]
+INNER JOIN (
+    SELECT TOP(1) [c0].[Id]
+    FROM [Cities] AS [c0]
+    WHERE [c0].[Id] = @__cityId_0
+    ORDER BY [c0].[Id]
+) AS [t] ON [c.PointsOfInterest].[CityId] = [t].[Id]
+ORDER BY [t].[Id]
+2018-11-19 16:46:15.844 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 258.0135ms.
+2018-11-19 16:46:15.846 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityDTO'.
+2018-11-19 16:46:15.853 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 270.8392ms
+2018-11-19 16:46:15.854 -03:00 [INF] Request finished in 274.3073ms 200 application/json; charset=utf-8
+2018-11-19 16:46:15.855 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000005": the application completed without reading the entire request body.
+2018-11-19 16:46:22.625 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4?includePointsOfInterest=false application/json 97
+2018-11-19 16:46:22.626 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:46:22.627 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","False"]) - Validation state: "Valid"
+2018-11-19 16:46:22.628 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:46:22.631 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 16:46:22.632 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.207ms.
+2018-11-19 16:46:22.633 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityWithoutPointsOfInterest'.
+2018-11-19 16:46:22.634 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 7.3662ms
+2018-11-19 16:46:22.635 -03:00 [INF] Request finished in 9.5671ms 200 application/json; charset=utf-8
+2018-11-19 16:46:22.635 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000006": the application completed without reading the entire request body.
+2018-11-19 16:46:27.524 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4?includePointsOfInterest=true application/json 97
+2018-11-19 16:46:27.525 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:46:27.526 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","True"]) - Validation state: "Valid"
+2018-11-19 16:46:27.528 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:46:27.530 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+ORDER BY [c].[Id]
+2018-11-19 16:46:27.532 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c.PointsOfInterest].[Id], [c.PointsOfInterest].[CityId], [c.PointsOfInterest].[Description], [c.PointsOfInterest].[Name]
+FROM [PointsOfInterest] AS [c.PointsOfInterest]
+INNER JOIN (
+    SELECT TOP(1) [c0].[Id]
+    FROM [Cities] AS [c0]
+    WHERE [c0].[Id] = @__cityId_0
+    ORDER BY [c0].[Id]
+) AS [t] ON [c.PointsOfInterest].[CityId] = [t].[Id]
+ORDER BY [t].[Id]
+2018-11-19 16:46:27.534 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6.3199000000000005ms.
+2018-11-19 16:46:27.535 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityDTO'.
+2018-11-19 16:46:27.536 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 9.823500000000001ms
+2018-11-19 16:46:27.537 -03:00 [INF] Request finished in 12.6561ms 200 application/json; charset=utf-8
+2018-11-19 16:46:27.537 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000007": the application completed without reading the entire request body.
+2018-11-19 16:46:50.644 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4?includePointsOfInterest=false application/json 97
+2018-11-19 16:46:50.645 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:46:50.646 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","False"]) - Validation state: "Valid"
+2018-11-19 16:46:50.647 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:46:50.649 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 16:46:50.650 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.448ms.
+2018-11-19 16:46:50.651 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityWithoutPointsOfInterest'.
+2018-11-19 16:46:50.652 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 6.5687000000000006ms
+2018-11-19 16:46:50.683 -03:00 [INF] Request finished in 38.6604ms 200 application/json; charset=utf-8
+2018-11-19 16:46:50.684 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000008": the application completed without reading the entire request body.
+2018-11-19 16:46:55.730 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4?includePointsOfInterest=true application/json 97
+2018-11-19 16:46:55.731 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:46:55.733 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","True"]) - Validation state: "Valid"
+2018-11-19 16:46:55.734 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:46:55.737 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+ORDER BY [c].[Id]
+2018-11-19 16:46:55.738 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c.PointsOfInterest].[Id], [c.PointsOfInterest].[CityId], [c.PointsOfInterest].[Description], [c.PointsOfInterest].[Name]
+FROM [PointsOfInterest] AS [c.PointsOfInterest]
+INNER JOIN (
+    SELECT TOP(1) [c0].[Id]
+    FROM [Cities] AS [c0]
+    WHERE [c0].[Id] = @__cityId_0
+    ORDER BY [c0].[Id]
+) AS [t] ON [c.PointsOfInterest].[CityId] = [t].[Id]
+ORDER BY [t].[Id]
+2018-11-19 16:46:55.740 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6.1047ms.
+2018-11-19 16:46:55.741 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityDTO'.
+2018-11-19 16:46:55.743 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 10.0036ms
+2018-11-19 16:46:55.744 -03:00 [INF] Request finished in 13.1888ms 200 application/json; charset=utf-8
+2018-11-19 16:46:55.744 -03:00 [INF] Connection id "0HLIEAU1HS2I9", Request id "0HLIEAU1HS2I9:00000009": the application completed without reading the entire request body.
+2018-11-19 16:56:55.968 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 16:56:56.228 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 16:56:56.468 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:56:56.616 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 16:56:56.742 -03:00 [INF] Executed DbCommand (23ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 16:56:56.754 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 16:56:56.760 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 100), @p1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2018-11-19 16:56:56.833 -03:00 [INF] Executed DbCommand (70ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (Size = 100), @p4='?' (Size = 50), @p5='?' (DbType = Int32), @p6='?' (Size = 100), @p7='?' (Size = 50), @p8='?' (DbType = Int32), @p9='?' (Size = 100), @p10='?' (Size = 50), @p11='?' (DbType = Int32), @p12='?' (Size = 100), @p13='?' (Size = 50), @p14='?' (DbType = Int32), @p15='?' (Size = 100), @p16='?' (Size = 50), @p17='?' (DbType = Int32), @p18='?' (Size = 100), @p19='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [PointsOfInterest] USING (
+VALUES (@p2, @p3, @p4, 0),
+(@p5, @p6, @p7, 1),
+(@p8, @p9, @p10, 2),
+(@p11, @p12, @p13, 3),
+(@p14, @p15, @p16, 4),
+(@p17, @p18, @p19, 5)) AS i ([CityId], [Description], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CityId], [Description], [Name])
+VALUES (i.[CityId], i.[Description], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [PointsOfInterest] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+2018-11-19 16:57:03.546 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4?includePointsOfInterest=true application/json 97
+2018-11-19 16:57:03.685 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:57:03.715 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","True"]) - Validation state: "Valid"
+2018-11-19 16:57:03.728 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:57:03.804 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+ORDER BY [c].[Id]
+2018-11-19 16:57:03.810 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 85.84320000000001ms.
+2018-11-19 16:57:03.818 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-19 16:57:03.821 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 133.4486ms
+2018-11-19 16:57:03.830 -03:00 [INF] Request finished in 284.269ms 404 text/plain
+2018-11-19 16:57:03.841 -03:00 [INF] Connection id "0HLIEB4MH6VA9", Request id "0HLIEB4MH6VA9:00000001": the application completed without reading the entire request body.
+2018-11-19 16:57:07.478 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1?includePointsOfInterest=true application/json 97
+2018-11-19 16:57:07.479 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 16:57:07.481 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","True"]) - Validation state: "Valid"
+2018-11-19 16:57:07.483 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 16:57:07.485 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+ORDER BY [c].[Id]
+2018-11-19 16:57:07.509 -03:00 [INF] Executed DbCommand (11ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c.PointsOfInterest].[Id], [c.PointsOfInterest].[CityId], [c.PointsOfInterest].[Description], [c.PointsOfInterest].[Name]
+FROM [PointsOfInterest] AS [c.PointsOfInterest]
+INNER JOIN (
+    SELECT TOP(1) [c0].[Id]
+    FROM [Cities] AS [c0]
+    WHERE [c0].[Id] = @__cityId_0
+    ORDER BY [c0].[Id]
+) AS [t] ON [c.PointsOfInterest].[CityId] = [t].[Id]
+ORDER BY [t].[Id]
+2018-11-19 16:57:07.516 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 33.5567ms.
+2018-11-19 16:57:07.521 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityDTO'.
+2018-11-19 16:57:07.583 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 102.53760000000001ms
+2018-11-19 16:57:07.585 -03:00 [INF] Request finished in 106.5988ms 200 application/json; charset=utf-8
+2018-11-19 16:57:07.586 -03:00 [INF] Connection id "0HLIEB4MH6VA9", Request id "0HLIEB4MH6VA9:00000002": the application completed without reading the entire request body.
+2018-11-19 17:02:25.262 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 17:02:25.527 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 17:02:25.773 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:02:25.911 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 17:02:29.367 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1?includePointsOfInterest=true application/json 97
+2018-11-19 17:02:29.492 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 17:02:29.526 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","True"]) - Validation state: "Valid"
+2018-11-19 17:02:29.539 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:02:29.624 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+ORDER BY [c].[Id]
+2018-11-19 17:02:29.662 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c.PointsOfInterest].[Id], [c.PointsOfInterest].[CityId], [c.PointsOfInterest].[Description], [c.PointsOfInterest].[Name]
+FROM [PointsOfInterest] AS [c.PointsOfInterest]
+INNER JOIN (
+    SELECT TOP(1) [c0].[Id]
+    FROM [Cities] AS [c0]
+    WHERE [c0].[Id] = @__cityId_0
+    ORDER BY [c0].[Id]
+) AS [t] ON [c.PointsOfInterest].[CityId] = [t].[Id]
+ORDER BY [t].[Id]
+2018-11-19 17:02:29.677 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 141.8962ms.
+2018-11-19 17:02:29.685 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityDTO'.
+2018-11-19 17:02:29.744 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 248.281ms
+2018-11-19 17:02:29.748 -03:00 [INF] Request finished in 381.6591ms 200 application/json; charset=utf-8
+2018-11-19 17:02:29.762 -03:00 [INF] Connection id "0HLIEB7NKBT27", Request id "0HLIEB7NKBT27:00000001": the application completed without reading the entire request body.
+2018-11-19 17:02:32.518 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4?includePointsOfInterest=true application/json 97
+2018-11-19 17:02:32.519 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 17:02:32.521 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["4","True"]) - Validation state: "Valid"
+2018-11-19 17:02:32.523 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:02:32.526 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+ORDER BY [c].[Id]
+2018-11-19 17:02:32.528 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 5.2226ms.
+2018-11-19 17:02:32.532 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-19 17:02:32.533 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 12.6821ms
+2018-11-19 17:02:32.534 -03:00 [INF] Request finished in 15.6933ms 404 text/plain
+2018-11-19 17:02:32.535 -03:00 [INF] Connection id "0HLIEB7NKBT27", Request id "0HLIEB7NKBT27:00000002": the application completed without reading the entire request body.
+2018-11-19 17:02:38.157 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1 application/json 97
+2018-11-19 17:02:38.158 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 17:02:38.160 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","False"]) - Validation state: "Valid"
+2018-11-19 17:02:38.161 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:02:38.170 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 17:02:38.173 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.6309ms.
+2018-11-19 17:02:38.174 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityWithoutPointsOfInterest'.
+2018-11-19 17:02:38.177 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 18.0041ms
+2018-11-19 17:02:38.178 -03:00 [INF] Request finished in 20.5649ms 200 application/json; charset=utf-8
+2018-11-19 17:02:38.179 -03:00 [INF] Connection id "0HLIEB7NKBT27", Request id "0HLIEB7NKBT27:00000003": the application completed without reading the entire request body.
+2018-11-19 17:02:40.453 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities application/json 97
+2018-11-19 17:02:40.457 -03:00 [INF] Route matched with {action = "GetCities", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API)
+2018-11-19 17:02:40.463 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API) - Validation state: "Valid"
+2018-11-19 17:02:40.479 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:02:40.529 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2018-11-19 17:02:40.531 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 66.8857ms.
+2018-11-19 17:02:40.533 -03:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[CitiesInfo.API.Models.CityWithoutPointsOfInterest, CitiesInfo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-11-19 17:02:40.536 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API) in 75.4522ms
+2018-11-19 17:02:40.536 -03:00 [INF] Request finished in 83.5906ms 200 application/json; charset=utf-8
+2018-11-19 17:02:40.537 -03:00 [INF] Connection id "0HLIEB7NKBT27", Request id "0HLIEB7NKBT27:00000004": the application completed without reading the entire request body.
+2018-11-19 17:16:23.035 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 17:16:23.283 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 17:16:23.501 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:16:23.638 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 17:17:12.088 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities application/json 97
+2018-11-19 17:17:12.193 -03:00 [INF] Route matched with {action = "GetCities", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API)
+2018-11-19 17:17:12.205 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API) - Validation state: "Valid"
+2018-11-19 17:17:12.208 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:17:12.229 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2018-11-19 17:17:12.270 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 59.1948ms.
+2018-11-19 17:17:12.278 -03:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[CitiesInfo.API.Models.CityWithoutPointsOfInterest, CitiesInfo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-11-19 17:17:12.325 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCities (CitiesInfo.API) in 127.6097ms
+2018-11-19 17:17:12.329 -03:00 [INF] Request finished in 241.0201ms 200 application/json; charset=utf-8
+2018-11-19 17:17:12.346 -03:00 [INF] Connection id "0HLIEBFUML1V4", Request id "0HLIEBFUML1V4:00000001": the application completed without reading the entire request body.
+2018-11-19 17:17:15.267 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1 application/json 97
+2018-11-19 17:17:15.279 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 17:17:15.306 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","False"]) - Validation state: "Valid"
+2018-11-19 17:17:15.320 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:17:15.344 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 17:17:15.354 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 17:17:15.356 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 39.1894ms.
+2018-11-19 17:17:15.359 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-19 17:17:15.360 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 79.89670000000001ms
+2018-11-19 17:17:15.361 -03:00 [INF] Request finished in 94.8342ms 404 text/plain
+2018-11-19 17:17:15.363 -03:00 [INF] Connection id "0HLIEBFUML1V4", Request id "0HLIEBFUML1V4:00000002": the application completed without reading the entire request body.
+2018-11-19 17:17:17.335 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1 application/json 97
+2018-11-19 17:17:17.336 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 17:17:17.338 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","False"]) - Validation state: "Valid"
+2018-11-19 17:17:17.339 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:17:17.341 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 17:17:17.342 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 17:17:17.343 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 4.8020000000000005ms.
+2018-11-19 17:17:17.344 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-19 17:17:17.345 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 7.4368000000000007ms
+2018-11-19 17:17:17.345 -03:00 [INF] Request finished in 10.4861ms 404 text/plain
+2018-11-19 17:17:17.346 -03:00 [INF] Connection id "0HLIEBFUML1V4", Request id "0HLIEBFUML1V4:00000003": the application completed without reading the entire request body.
+2018-11-19 17:17:18.614 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1 application/json 97
+2018-11-19 17:17:18.615 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 17:17:18.616 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","False"]) - Validation state: "Valid"
+2018-11-19 17:17:18.617 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:17:18.620 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 17:17:18.622 -03:00 [INF] Executed DbCommand (0ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 17:17:18.624 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.NotFoundResult in 6.4343ms.
+2018-11-19 17:17:18.625 -03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 404
+2018-11-19 17:17:18.625 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 9.635ms
+2018-11-19 17:17:18.626 -03:00 [INF] Request finished in 12.4643ms 404 text/plain
+2018-11-19 17:17:18.627 -03:00 [INF] Connection id "0HLIEBFUML1V4", Request id "0HLIEBFUML1V4:00000004": the application completed without reading the entire request body.
+2018-11-19 17:18:25.654 -03:00 [INF] Iniciando Aplicação...
+2018-11-19 17:18:25.893 -03:00 [INF] User profile is available. Using 'C:\Users\pedro\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-11-19 17:18:26.109 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:18:26.234 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 17:18:30.535 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1 application/json 97
+2018-11-19 17:18:30.652 -03:00 [INF] Route matched with {action = "GetCity", controller = "Cities"}. Executing action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API)
+2018-11-19 17:18:30.680 -03:00 [INF] Executing action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) with arguments (["1","False"]) - Validation state: "Valid"
+2018-11-19 17:18:30.694 -03:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-11-19 17:18:30.726 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2018-11-19 17:18:30.771 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[@__cityId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-11-19 17:18:30.776 -03:00 [INF] Executed action method CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 83.36630000000001ms.
+2018-11-19 17:18:30.783 -03:00 [INF] Executing ObjectResult, writing value of type 'CitiesInfo.API.Models.CityWithoutPointsOfInterest'.
+2018-11-19 17:18:30.834 -03:00 [INF] Executed action CitiesInfo.API.Controllers.CitiesController.GetCity (CitiesInfo.API) in 178.87980000000002ms
+2018-11-19 17:18:30.842 -03:00 [INF] Request finished in 307.9104ms 200 application/json; charset=utf-8
+2018-11-19 17:18:30.859 -03:00 [INF] Connection id "0HLIEBGM2QME6", Request id "0HLIEBGM2QME6:00000001": the application completed without reading the entire request body.

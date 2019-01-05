@@ -1,0 +1,25 @@
+<div class="form-group">
+
+  <select ngModel #cityId="ngModel" name="cities" id="cities" class="form-control" (change)="getPointsOfInterest(cityId.value)">
+    <option value=""></option>
+    <option *ngFor="let city of cities" [value]=city.id> {{ city.name }} </option>
+  </select>
+
+</div>
+
+<div *ngIf="pointsOfInterest">
+
+  <h2>Pontos Turísticos</h2>
+
+  <div *ngFor="let poi of pointsOfInterest">
+    <app-point-of-interest [cityId]=cityId.value [pointOfInterest]=poi></app-point-of-interest>
+  </div>
+
+  <button class="btn btn-primary" (click)="createPOI()">
+    <span class="glyphicon" [class.glyphicon-plus]=!create [class.glyphicon-minus]=create></span>
+  </button>
+
+  <app-create-point-of-interest [cityId]=cityId.value>
+  </app-create-point-of-interest>
+
+</div>
